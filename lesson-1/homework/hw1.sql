@@ -9,4 +9,69 @@
     - Встроенные аналитические функции
 3) - Аутентификация Windows - Это обеспечивает интегрированную безопасность без необходимости вводить отдельные логин и пароль для SQL Server.
    - Аутентификация SQL Server - Использует логин и пароль, которые создаются и хранятся непосредственно в SQL Server. Пользователь вводит эти данные для подключения независимо от учетной записи Windows.
-4) 
+4) create database schoolDB
+5) create table students(studentsID int primary key,Name varchar(50), age int)
+6) SQL Server (Microsoft SQL Server) — это система управления базами данных (СУБД), разработанная компанией Microsoft. Она используется для хранения, управления и обработки данных в базах данных.
+SSMS — это графическая среда (интерфейс) для работы с SQL Server. SQL — это язык программирования, предназначенный для работы с базами данных.
+7)1. DQL — Data Query Language (Язык запросов к данным) Назначение: Используется для получения данных из базы данных.
+Основная команда: SELECT
+Пример:
+SELECT * FROM Employees;
+-- DML — Data Manipulation Language (Язык манипулирования данными)
+Назначение: Используется для вставки, изменения и удаления данных.
+Команды: INSERT, UPDATE, DELETE, MERGE
+Примеры:
+INSERT INTO Employees (Name, Age) VALUES ('Алиса', 30);
+UPDATE Employees SET Age = 31 WHERE Name = 'Алиса';
+DELETE FROM Employees WHERE Name = 'Алиса';
+Объяснение: DML-операции работают с данными в таблицах.
+Они могут быть отменены с помощью транзакций (например, ROLLBACK).
+--DDL — Data Definition Language (Язык определения данных)
+Назначение: Описывает структуру базы данных — создание и изменение таблиц, схем и др.
+Команды: CREATE, ALTER, DROP, TRUNCATE, RENAME
+Примеры:
+CREATE TABLE Employees (
+  ID INT PRIMARY KEY,
+  Name VARCHAR(100),
+  Age INT
+);
+ALTER TABLE Employees ADD Email VARCHAR(100);
+DROP TABLE Employees;
+Объяснение: DDL-операции меняют структуру базы данных.
+Эти команды автоматически сохраняются (auto-commit) и не могут быть отменены (в отличие от DML).
+-- DCL — Data Control Language (Язык управления доступом)
+Назначение: Управление правами доступа к данным и объектам базы.
+Команды: GRANT, REVOKE
+Примеры:
+GRANT SELECT, INSERT ON Employees TO User123;
+REVOKE INSERT ON Employees FROM User123;
+Объяснение: DCL используется администраторами БД для назначения и отзыва прав пользователей.
+TCL — Transaction Control Language (Язык управления транзакциями)
+Назначение: Управляет транзакциями, то есть логическими группами SQL-операций.
+Команды: COMMIT, ROLLBACK, SAVEPOINT, BEGIN TRANSACTION
+Примеры:
+BEGIN TRANSACTION;
+UPDATE Employees SET Age = 32 WHERE Name = 'Иван';
+COMMIT; -- подтверждение изменений
+Или:
+sql
+Копировать
+Редактировать
+BEGIN TRANSACTION;
+DELETE FROM Employees WHERE Age < 18;
+ROLLBACK; -- отмена изменений
+Объяснение: TCL используется для обеспечения целостности данных при выполнении нескольких операций.
+Позволяет отменить или подтвердить изменения, сделанные DML-командами.
+8) VERSION 1
+--insert
+insert into students values (1, 'Asilya','Nurulova', 31)
+VERSION 2
+--insert
+insert into students (lname,name,id,age) values('Nurulova','Asilya',30,1)
+VERSION 3
+--insert
+insert into students (lname,name,id,age) values
+('Nurulova','Asilya',30,1),
+('Asilya','Nurulova',5,23)
+
+
